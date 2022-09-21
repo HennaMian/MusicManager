@@ -1,0 +1,23 @@
+
+D7N100>['electronic' 'rock' 'metal' 'jazz' 'rock' 'electronic' 'rock' 'hispanic'
+ 'rock' 'rock']
+D7N100>['rock' 'pop' 'blues' 'hiphop' 'electronic' 'classical' 'electronic'
+ 'jazz' 'rock' 'indian']
+D7N100>['rock' 'rock' 'punk' 'indian' 'pop' 'afro' 'country' 'rock' 'classical'
+ 'blues']
+D7N100>['blues' 'punk' 'rock' 'jazz' 'electronic' 'hispanic' 'indian' 'jazz'
+ 'blues' 'jazz']
+D7N100>['classical' 'rock' 'hiphop' 'jazz' 'rock' 'rock' 'classical' 'hispanic'
+ 'rock' 'rock']
+D7N500>['electronic' 'rock' 'rock' 'classical' 'rock' 'rock' 'rock' 'rock' 'rock'
+ 'jazz' 'rock' 'classical' 'rock' 'rock' 'country' 'rock' 'rock' 'rock'
+ 'rock' 'rock' 'rock' 'rock' 'classical' 'electronic' 'rock' 'rock'
+ 'electronic' 'rock' 'classical' 'rock' 'rock' 'jazz' 'electronic' 'rock'
+ 'rock' 'classical' 'rock' 'jazz' 'rock' 'electronic' 'rock' 'country'
+ 'rock' 'electronic' 'rock' 'rock' 'rock' 'electronic' 'jazz' 'rock']
+D7N11000>['rock' 'rock' 'rock' ... 'classical' 'classical' 'electronic']
+D7N11000>['rock' 'metal' 'rock' ... 'rock' 'rock' 'jazz']
+D10N11000>['rock' 'rock' 'rock' ... 'metal' 'classical' 'rock']
+D10N11000>['rock' 'rock' 'rock' ... 'electronic' 'rock' 'rock']
+D13N11000>['classical' 'rock' 'hiphop' ... 'rock' 'rock' 'rock']
+D13N11000>['metal' 'classical' 'jazz' ... 'pop' 'electronic' 'rock']
