@@ -1,0 +1,135 @@
+Test Size 0.1 Dimensions: 5 Top feats: 3 F1: 0.45
+Test Size 0.1 Dimensions: 5 Top feats: 6 F1: 0.51
+Test Size 0.1 Dimensions: 5 Top feats: 9 F1: 0.53
+Test Size 0.1 Dimensions: 5 Top feats: 12 F1: 0.54
+Test Size 0.1 Dimensions: 5 Top feats: 15 F1: 0.53
+Test Size 0.1 Dimensions: 5 Top feats: 18 F1: 0.54
+Test Size 0.1 Dimensions: 10 Top feats: 3 F1: 0.48
+Test Size 0.1 Dimensions: 10 Top feats: 6 F1: 0.53
+Test Size 0.1 Dimensions: 10 Top feats: 9 F1: 0.54
+Test Size 0.1 Dimensions: 10 Top feats: 12 F1: 0.54
+Test Size 0.1 Dimensions: 10 Top feats: 15 F1: 0.54
+Test Size 0.1 Dimensions: 10 Top feats: 18 F1: 0.54
+Test Size 0.1 Dimensions: 15 Top feats: 3 F1: 0.51
+Test Size 0.1 Dimensions: 15 Top feats: 6 F1: 0.53
+Test Size 0.1 Dimensions: 15 Top feats: 9 F1: 0.54
+Test Size 0.1 Dimensions: 15 Top feats: 12 F1: 0.54
+Test Size 0.1 Dimensions: 15 Top feats: 15 F1: 0.54
+Test Size 0.1 Dimensions: 15 Top feats: 18 F1: 0.54
+Test Size 0.1 Dimensions: 20 Top feats: 3 F1: 0.51
+Test Size 0.1 Dimensions: 20 Top feats: 6 F1: 0.52
+Test Size 0.1 Dimensions: 20 Top feats: 9 F1: 0.54
+Test Size 0.1 Dimensions: 20 Top feats: 12 F1: 0.54
+Test Size 0.1 Dimensions: 20 Top feats: 15 F1: 0.54
+Test Size 0.1 Dimensions: 20 Top feats: 18 F1: 0.54
+Test Size 0.1 Max F1 Score: 0.54
+Test Size 0.1 Max F1 Score Dim: 5
+Test Size 0.1 Max F1 Score Feaures: 12
+Test Size 0.25 Dimensions: 5 Top feats: 3 F1: 0.45
+Test Size 0.25 Dimensions: 5 Top feats: 6 F1: 0.52
+Test Size 0.25 Dimensions: 5 Top feats: 9 F1: 0.53
+Test Size 0.25 Dimensions: 5 Top feats: 12 F1: 0.53
+Test Size 0.25 Dimensions: 5 Top feats: 15 F1: 0.54
+Test Size 0.25 Dimensions: 5 Top feats: 18 F1: 0.55
+Test Size 0.25 Dimensions: 10 Top feats: 3 F1: 0.48
+Test Size 0.25 Dimensions: 10 Top feats: 6 F1: 0.54
+Test Size 0.25 Dimensions: 10 Top feats: 9 F1: 0.55
+Test Size 0.25 Dimensions: 10 Top feats: 12 F1: 0.55
+Test Size 0.25 Dimensions: 10 Top feats: 15 F1: 0.55
+Test Size 0.25 Dimensions: 10 Top feats: 18 F1: 0.55
+Test Size 0.25 Dimensions: 15 Top feats: 3 F1: 0.51
+Test Size 0.25 Dimensions: 15 Top feats: 6 F1: 0.54
+Test Size 0.25 Dimensions: 15 Top feats: 9 F1: 0.54
+Test Size 0.25 Dimensions: 15 Top feats: 12 F1: 0.55
+Test Size 0.25 Dimensions: 15 Top feats: 15 F1: 0.55
+Test Size 0.25 Dimensions: 15 Top feats: 18 F1: 0.55
+Test Size 0.25 Dimensions: 20 Top feats: 3 F1: 0.52
+Test Size 0.25 Dimensions: 20 Top feats: 6 F1: 0.55
+Test Size 0.25 Dimensions: 20 Top feats: 9 F1: 0.54
+Test Size 0.25 Dimensions: 20 Top feats: 12 F1: 0.54
+Test Size 0.25 Dimensions: 20 Top feats: 15 F1: 0.55
+Test Size 0.25 Dimensions: 20 Top feats: 18 F1: 0.55
+Test Size 0.25 Max F1 Score: 0.55
+Test Size 0.25 Max F1 Score Dim: 5
+Test Size 0.25 Max F1 Score Feaures: 18
+Test Size 0.5 Dimensions: 5 Top feats: 3 F1: 0.43
+Test Size 0.5 Dimensions: 5 Top feats: 6 F1: 0.49
+Test Size 0.5 Dimensions: 5 Top feats: 9 F1: 0.5
+Test Size 0.5 Dimensions: 5 Top feats: 12 F1: 0.51
+Test Size 0.5 Dimensions: 5 Top feats: 15 F1: 0.52
+Test Size 0.5 Dimensions: 5 Top feats: 18 F1: 0.52
+Test Size 0.5 Dimensions: 10 Top feats: 3 F1: 0.46
+Test Size 0.5 Dimensions: 10 Top feats: 6 F1: 0.5
+Test Size 0.5 Dimensions: 10 Top feats: 9 F1: 0.52
+Test Size 0.5 Dimensions: 10 Top feats: 12 F1: 0.52
+Test Size 0.5 Dimensions: 10 Top feats: 15 F1: 0.52
+Test Size 0.5 Dimensions: 10 Top feats: 18 F1: 0.52
+Test Size 0.5 Dimensions: 15 Top feats: 3 F1: 0.47
+Test Size 0.5 Dimensions: 15 Top feats: 6 F1: 0.5
+Test Size 0.5 Dimensions: 15 Top feats: 9 F1: 0.52
+Test Size 0.5 Dimensions: 15 Top feats: 12 F1: 0.52
+Test Size 0.5 Dimensions: 15 Top feats: 15 F1: 0.52
+Test Size 0.5 Dimensions: 15 Top feats: 18 F1: 0.52
+Test Size 0.5 Dimensions: 20 Top feats: 3 F1: 0.49
+Test Size 0.5 Dimensions: 20 Top feats: 6 F1: 0.51
+Test Size 0.5 Dimensions: 20 Top feats: 9 F1: 0.52
+Test Size 0.5 Dimensions: 20 Top feats: 12 F1: 0.52
+Test Size 0.5 Dimensions: 20 Top feats: 15 F1: 0.52
+Test Size 0.5 Dimensions: 20 Top feats: 18 F1: 0.52
+Test Size 0.5 Max F1 Score: 0.52
+Test Size 0.5 Max F1 Score Dim: 5
+Test Size 0.5 Max F1 Score Feaures: 15
+Test Size 0.75 Dimensions: 5 Top feats: 3 F1: 0.42
+Test Size 0.75 Dimensions: 5 Top feats: 6 F1: 0.48
+Test Size 0.75 Dimensions: 5 Top feats: 9 F1: 0.49
+Test Size 0.75 Dimensions: 5 Top feats: 12 F1: 0.49
+Test Size 0.75 Dimensions: 5 Top feats: 15 F1: 0.49
+Test Size 0.75 Dimensions: 5 Top feats: 18 F1: 0.5
+Test Size 0.75 Dimensions: 10 Top feats: 3 F1: 0.45
+Test Size 0.75 Dimensions: 10 Top feats: 6 F1: 0.49
+Test Size 0.75 Dimensions: 10 Top feats: 9 F1: 0.5
+Test Size 0.75 Dimensions: 10 Top feats: 12 F1: 0.5
+Test Size 0.75 Dimensions: 10 Top feats: 15 F1: 0.5
+Test Size 0.75 Dimensions: 10 Top feats: 18 F1: 0.5
+Test Size 0.75 Dimensions: 15 Top feats: 3 F1: 0.47
+Test Size 0.75 Dimensions: 15 Top feats: 6 F1: 0.49
+Test Size 0.75 Dimensions: 15 Top feats: 9 F1: 0.49
+Test Size 0.75 Dimensions: 15 Top feats: 12 F1: 0.5
+Test Size 0.75 Dimensions: 15 Top feats: 15 F1: 0.5
+Test Size 0.75 Dimensions: 15 Top feats: 18 F1: 0.5
+Test Size 0.75 Dimensions: 20 Top feats: 3 F1: 0.47
+Test Size 0.75 Dimensions: 20 Top feats: 6 F1: 0.49
+Test Size 0.75 Dimensions: 20 Top feats: 9 F1: 0.5
+Test Size 0.75 Dimensions: 20 Top feats: 12 F1: 0.5
+Test Size 0.75 Dimensions: 20 Top feats: 15 F1: 0.5
+Test Size 0.75 Dimensions: 20 Top feats: 18 F1: 0.5
+Test Size 0.75 Max F1 Score: 0.5
+Test Size 0.75 Max F1 Score Dim: 5
+Test Size 0.75 Max F1 Score Feaures: 18
+Test Size 0.9 Dimensions: 5 Top feats: 3 F1: 0.41
+Test Size 0.9 Dimensions: 5 Top feats: 6 F1: 0.46
+Test Size 0.9 Dimensions: 5 Top feats: 9 F1: 0.46
+Test Size 0.9 Dimensions: 5 Top feats: 12 F1: 0.47
+Test Size 0.9 Dimensions: 5 Top feats: 15 F1: 0.47
+Test Size 0.9 Dimensions: 5 Top feats: 18 F1: 0.48
+Test Size 0.9 Dimensions: 10 Top feats: 3 F1: 0.43
+Test Size 0.9 Dimensions: 10 Top feats: 6 F1: 0.46
+Test Size 0.9 Dimensions: 10 Top feats: 9 F1: 0.47
+Test Size 0.9 Dimensions: 10 Top feats: 12 F1: 0.48
+Test Size 0.9 Dimensions: 10 Top feats: 15 F1: 0.48
+Test Size 0.9 Dimensions: 10 Top feats: 18 F1: 0.48
+Test Size 0.9 Dimensions: 15 Top feats: 3 F1: 0.45
+Test Size 0.9 Dimensions: 15 Top feats: 6 F1: 0.47
+Test Size 0.9 Dimensions: 15 Top feats: 9 F1: 0.47
+Test Size 0.9 Dimensions: 15 Top feats: 12 F1: 0.48
+Test Size 0.9 Dimensions: 15 Top feats: 15 F1: 0.48
+Test Size 0.9 Dimensions: 15 Top feats: 18 F1: 0.48
+Test Size 0.9 Dimensions: 20 Top feats: 3 F1: 0.45
+Test Size 0.9 Dimensions: 20 Top feats: 6 F1: 0.47
+Test Size 0.9 Dimensions: 20 Top feats: 9 F1: 0.47
+Test Size 0.9 Dimensions: 20 Top feats: 12 F1: 0.48
+Test Size 0.9 Dimensions: 20 Top feats: 15 F1: 0.48
+Test Size 0.9 Dimensions: 20 Top feats: 18 F1: 0.48
+Test Size 0.9 Max F1 Score: 0.48
+Test Size 0.9 Max F1 Score Dim: 5
+Test Size 0.9 Max F1 Score Feaures: 18
