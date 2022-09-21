@@ -1,0 +1,6 @@
+29
+5
+Jameel M Abbess IV,Jack H Kolb,Margaret R Brown,Kelian Li,Henna Mian
+Music Genre Classification
+https://youtu.be/jIDLzC7RZz8
+https://ml-spring21-project29.github.io
