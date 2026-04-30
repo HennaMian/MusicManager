@@ -14,11 +14,11 @@ We obtained song datasets from the online AcousticBrainz recording library. This
 
 A common dataset was created from which to train each classifier. While some classifiers can handle string features, most are limited to numerical features. We used a numpy array to represent a feature matrix, for both the performance benefits and numpy's integration with scikit-learn. Towards these goals, we wrote a utility script that opens each song recording in our data folder, converts its JSON contents into a map of features, and then constructs a feature matrix using only the numerical features available. Numerical substitutions were specified for the song's key, which was a feature we were interested in keeping. This process also generated corresponding arrays of song IDs, feature names, and the labeled genres for us to validate the classifiers.
 
-The resulting feature matrix had 64 features. We took care to minimize memory leaks in the utility function, and experienced no issues when processing a 15,000 song dataset. Such that only one of our members would need to download the dataset, we serialized the numpy matrices into files and distributed those files to group members. This allowed group members to import the matrices with only a few lines of code, and save the disk space associated with downloading the raw dataset. The final, raw dataset consisted of 15,000 songs. After cleaning this dataset to consolidate similar genres and filter out badly-formed data, 11,000 songs remained for downstream analysis with 19 genre labels (**Figure 1**):
+The resulting feature matrix had 64 features. We took care to minimize memory leaks in the utility function, and experienced no issues when processing a 15,000 song dataset. To avoid repeated raw-data downloads, we serialized the NumPy matrices into reusable files. This allowed collaborators to import the matrices with only a few lines of code and save the disk space associated with downloading the raw dataset. The final, raw dataset consisted of 15,000 songs. After cleaning this dataset to consolidate similar genres and filter out badly-formed data, 11,000 songs remained for downstream analysis with 19 genre labels (**Figure 1**):
 
 **Figure 1: Final Labeled Dataset**
 
-![Final Labeled Dataset](song_Distribution.png)
+![Final Labeled Dataset](figures/song_Distribution.png)
 
 Because machine learning models in general have been used to predict labels for unlabeled data using only features for observations, we believed it would be possible to test and find a machine learning algorithm that can accurately predict genre labels for an unlabeled song. A limitation in this approach is that while 64 features seems like a lot of dimensionality, it may not be enough. Many studies require hundreds or even thousands of features for accurate classifications, so it is possible that the 64 features we have in this dataset may not be enough to accurately label songs by their genres, regardless of how capable the machine learning methods we test seem to be. Previously, applying these machine learning methods on the raw dataset exhibited poor results in accurately identifying each song's genre. Therefore, we have decided to implement two steps in pre-processing the dataset in order to increase accurate classifications. First, dimensionality reduction by principal component analysis (PCA) was implemented to extract the most meaningful features and remove noisy ones. Second, a data cleaning step is implemented in order to simplify redundant and inconsistent labels. Both of these steps are described in the Methods section.
 
@@ -27,10 +27,10 @@ Because machine learning models in general have been used to predict labels for 
 To compare the effectiveness of difference classification methods on this data, several classifiers were implemented and their accuracies were evaluated. Dimensionality reduction by principal component analysis (PCA) was used to extract the most meaningful features for genre predictions. A scree plot was generated to narrow a set of dimensions to utilize and maintain variance according to the elbow point of the curve (**Figure 2**). The contribution for each feature per dimension was computed (**Figure 3**) and used to select the reduced dimensions.
 
 **Figure 2: Scree Plot**
-![Scree Plot](scree_plot.jpeg)
+![Scree Plot](figures/scree_plot.jpeg)
 
 **Figure 3: Feature Contribution Plot**
-![Contribution Plot](contrib_plot_final.png)
+![Contribution Plot](figures/contrib_plot_final.png)
 
 For each set of dimensions we tested (dimensions 1-7, 1-10, 1-13), we found the top n features of highest contribution per dimension (either top 3 or top 10 per dimension). This allowed us to trial the classifiers on a variety of useful feature sets. Consistently, the top contributing features included "chords changes rate", "spectral rolloff", and "key strength" while "spectral speed", "average loudness" and "spectral centroid" seemed to consistently contribute the least amount of information and were typically excluded after dimensionality reduction. The following parameters for dimensionality reduction and feature extraction were tested across models in order to understand how many features seemed to aid in accurate classifications (**Table 2**):
 
@@ -80,18 +80,18 @@ Each machine learning classifier's accuracy has been evaluated to determine whic
 K-Means: We used K-Means to group the data into k clusters, varying k from two to ten. The algorithm returned a cluster center with a value of the mean of all the features in the cluster. We then found the closest point to the center and the the label of this point was assigned to all the points in the cluster in the updated feature matrix. We ran this clustering algorithm on the dataset with 11,000 features. According to the elbow graph, **Figure 4**, the optimal number of clusters is somewhere between three and five, with k=4 showing the highest accuracy among all results. 
 
 **Figure 4: K-Means Elbow Plot**
-![ElbowGraph](elbowGraph2.png)
+![ElbowGraph](figures/elbowGraph2.png)
 
 
 We ran K-Means clustering on 6 trials. Each trial is characterized by a different set of extracted features which, in order, are: 7 dimensions with the top 3 features, 7 dimensions with the top 10 features, 10 dimensions with the top 3 features, 10 dimensions with the top 3 features, 10 dimensions with the top 10 features, 13 dimensions with the top 3 features, and 13 dimensions with the top 10 features. **Figure 5** illustrates the feature clusters produced for each trial by running K-Means along with each feature’s accuracy based on each datapoint’s truth value:
 
 **Figure 5: K-Means Clusters per Trial**
-![AllTrials](allTrials.png)
+![AllTrials](figures/allTrials.png)
 
 Graphed below is the average accuracy of each trial.
 
 **Figure 6: K-Means Accuracies**
-![KMeansAccuracies](KMeansAccuracies.png)
+![KMeansAccuracies](figures/KMeansAccuracies.png)
 
 We can see that trial 4 had the highest accuracy of 13.00% and trial 5 had the lowest accuracy of 8.5%.
 
@@ -127,18 +127,18 @@ Using the raw dataset with no preprocessing, the following preliminary metrics w
 Clearly, the results for F1, Precision and Recall scores indicate poor accuracy in predicting each song's genre. After dimensionality reduction and data cleaning, a matrix consisting of music features with corresponding observations along with labels is passed to a training function which splits the training and test data by 10/90, 25/75, 50/50, 75/25, and 90/10 percentages. For each implementation, F1, Precision and Recall scores improved overall, indicating the importance of removing even just a few uninformative features and cleaning the dataset (**Figure 8**):
 
 **Figure 8: Random Forest Accuracy Metrics for Various Dimensionality Reduction Parameters**
-![F1](6_trials_f1metrics.jpeg)
-![Precision](6_trials_precision_metrics.jpeg)
-![Recall](6_trials_recall_metrics.jpeg)
+![F1](figures/6_trials_f1metrics.jpeg)
+![Precision](figures/6_trials_precision_metrics.jpeg)
+![Recall](figures/6_trials_recall_metrics.jpeg)
 
 
 Generally, including more data in the training set seemed to improve classification accuracy. In addition, keeping more features and dimensions tended to also improve classification accuracies. Additional empirical testing was conducted to obtain better insight into optimal dimensionality reduction parameters. Given that overall using 90% of the data for training set and 10% for the test set performed the best, the following F1, Precision and Recall scores are shown in **Figure 9** for this 90/10 training/testing split for various additional dimensionality reduction parameter testing:
 
 **Figure 9: Test Size 10% Accuracies**
 
-![F1 Plot](RF_F1_scores.png)
-![Precision Plot](RF_precision_scores.png)
-![Recall Plot](RF_recall_scores.png)
+![F1 Plot](figures/RF_F1_scores.png)
+![Precision Plot](figures/RF_precision_scores.png)
+![Recall Plot](figures/RF_recall_scores.png)
 
 The best F1, Precision and Recall Scores were obtained as shown in **Table 4** with the top score indicated in bold:
 
@@ -153,7 +153,7 @@ The highest F1 and Recall Scores were obtained from the same set of parameters, 
 The top F1, Precision and Recall scores are 0.26, 0.40, and 0.25 respectively, and are generally poor in accurately classifying songs by their genre based on this dataset. However, dimensionality reduction and data cleaning has improved classification overall. It is possible that additional kinds of features that may exist for songs may improve genre classification accuracy using Random Forest.
 
 **2. Support Vector Machine (SVM)**: 
-SVM is known to be a generally effective classifier for high dimensional data, however suffers from a long training time with larger dataset sizes. We used sklearn's SVM implementation for it's optimizations, and trialed the classifier by training on 90% of the dataset (randomly selected) and testing on the remaining 10%. As warned by sklearn and the lectures, fitting SVM to the dataset took hours to complete, however the F1 scores were refreshingly accurate. **Table 5** shows the F1 scores for the SVM implementation with each dimension and feature set trialed.
+SVM is known to be a generally effective classifier for high dimensional data, however suffers from a long training time with larger dataset sizes. We used sklearn's SVM implementation for it's optimizations, and trialed the classifier by training on 90% of the dataset (randomly selected) and testing on the remaining 10%. As expected for SVM on a larger feature matrix, fitting the model took hours to complete; however, the F1 scores were refreshingly accurate. **Table 5** shows the F1 scores for the SVM implementation with each dimension and feature set trialed.
 
 **Table 5: SVM F1 Results**
 | %Training/Testing | Dims | Top Contrib. Feats per Dimension | F1 Score | 
@@ -169,7 +169,7 @@ As expected, with more features represented in the data the F1 accuracy scores i
 
 **Figure 10: SVM F1 Scores**
 
-![SVM F1 Plot](svm_f1_plot.png)
+![SVM F1 Plot](figures/svm_f1_plot.png)
 
 
 **3. XGBoost**:
@@ -177,13 +177,13 @@ XGBoost is a flexible decision-tree based method which utilizes non-greedy tree 
 
 **Figure 11: 6 Trials F1 Scores**
 
-![XGB F1 6trialsPlot](xgb_6_trials_f1_metrics.jpeg)
+![XGB F1 6trialsPlot](figures/xgb_6_trials_f1_metrics.jpeg)
 
 Generally, including more data in the training set did not seem to significantly improve classification accuracy. However, keeping more features and dimensions tended to improve classification accuracies. Additional empirical testing was conducted to obtain better insight into optimal dimensionality reduction parameters. The top F1 score obtained was 0.55, with a test size of 25%, shown in **Figure 12**:
 
 **Figure 12: Test Size 25% Accuracies**
 
-![XGB F1 Plot](XGBoost_F1_scores.png)
+![XGB F1 Plot](figures/XGBoost_F1_scores.png)
 
 While it is not clear whether the number of dimensions or the number of top contributing features per dimension play a more important role in accuracy, it does appear that a trade-off exists. Empirical testing shown here may help to optimize parameters to improve classification by XGBoost, however these may be different for other machine learning methods.
 
@@ -208,11 +208,10 @@ In this project, we compared two unsupervised learning algorithms and three supe
 
 ## Contributions
 
-The following contributions were made by each team member:
+The following contributions were made by project collaborators:
 
-1. Jack Kolb: 
-- Implemented data collection and pre-processing for the rest of the group to easily obtain and use the dataset
-- Created the videos for the project proposal and final report
+1. Jack Kolb:
+- Implemented data collection and pre-processing for collaborators to use the dataset
 - Assisted in data cleaning work flow
 - Subset matrices for final implementations
 - Implemented and assessed SVM
@@ -222,18 +221,17 @@ The following contributions were made by each team member:
 - Came up with the initial idea of labeling music by genres
 - Provided the original dataset
 - Implemented and assessed XGBoost
-- Aided in the group's understanding of music technology features and problem definition 
+- Aided in the project team's understanding of music technology features and problem definition
 - Made significant written contributions to each report
 
 3. Jameel Abbess:
 - Major contributor to the data cleaning work flow
-- Took care of "administrative duties" such as setting up BlueJeans meetings, submitting project deliverables, etc.
 - Implemented and assessed GMM
 - Made significant written contributions to each report
 
 4. Henna Mian:
 - Assisted in data cleaning work flow
-- Took care of submitting project deliverables and setting up mark down files
+- Set up report markdown files
 - Implemented and assessed KMeans
 - Made significant written contributions to each report
 
@@ -258,5 +256,3 @@ Chen, Tianqi, and Carlos Guestrin. "Xgboost: A scalable tree boosting system." P
 
 Christopher M. Wilson, Brooke L. Fridley, José Conejo-Garcia, Xuefeng Wang, Xiaoqing Yu. Wide and Deep Learning for Automatic Cell Type Identification. bioRxiv 2020.10.09.328732; doi: https://doi.org/10.1101/2020.10.09.328732
 Now published in Computational and Structural Biotechnology Journal doi: 10.1016/j.csbj.2021.01.027
-
-

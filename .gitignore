@@ -1,0 +1,52 @@
+# Python cache and bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Build and packaging output
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# Test and tooling cache
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Local configuration and secrets
+.env
+.env.*
+!.env.example
+
+# Editor and OS files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Logs and one-off generated files
+*.log
+*.tmp
+*.temp
+final_report_submission_*.txt
+portfolio_links.txt
+SVM/prediction.txt
+
+# Large generated data artifacts for future work.
+# Already-tracked files require `git rm --cached <path>` before these rules apply.
+*.npy
+*.npz
+*.zip
+PCA/PCA/music_matrix.csv

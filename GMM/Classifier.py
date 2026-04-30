@@ -6,8 +6,8 @@ import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 
 import csv
-import DataCleaning
-import Feature_Extraction
+from scripts import DataCleaning
+from scripts import Feature_Extraction
 import pandas as pd
 
 class Classifier(object):

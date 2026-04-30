@@ -3,12 +3,6 @@ import re
 import copy
 from collections import Counter
 
-#-----------------------------------------------------------------------------#
-#    You're now entering the most poorly written data cleaning script ever    #
-#-----------------------------------------------------------------------------#
-
-
-
 class DataCleaner(object):
     def __init__(self, _data=None, _labels=None):
         self.data = _data
@@ -35,7 +29,6 @@ class DataCleaner(object):
         # for each label, filter it if possible
         for label in unique_labels:
             # make the label lowercase
-            #print(label)
             label = label.lower().replace(" ", "")
 
             # combine common labels
@@ -78,12 +71,6 @@ class DataCleaner(object):
             elif "pop" in label or "top40" in label:
                 label_map[label] = "pop"
 
-                
-            # DEBUG: otherwise, classify the label as itself -- remove this when we have enough good genres
-            #else:
-                #print("Currently unclassified label:", label)
-                #label_map[label] = label
-
         # get the raw labels and instantiate the cleaned label
         raw_labels = new_Classifier.GetLabels()
         cleaned_labels = [""] * len(raw_labels)
@@ -94,7 +81,6 @@ class DataCleaner(object):
             label = raw_labels[i].lower().replace(" ", "")
             # if the label is not mapped, ignore that song
             if label not in label_map:
-                #print("Label is not mapped:", label)
                 cleaned_labels[i] = "ignore"
 
             # otherwise use the map to group the label
@@ -113,8 +99,6 @@ class DataCleaner(object):
         # get the top labels
         label_counter = Counter(cleaned_labels)
         top_labels = label_counter.most_common(n)
-        #print("Top labels:", top_labels)
-        # return the resulting labels and songs
         return cleaned_labels, cleaned_songs
         
 
@@ -146,18 +130,14 @@ class DataCleaner(object):
             word_dict[unique_words[i]] = counts[i]
         # sort unique words by count
         sorted_words = sorted(word_dict, key=word_dict.get, reverse=True)
-        # let's just print out our top n and see where we're at
         _topGenres = list()
         for i in range(n):
-            #num = word_dict[sorted_words[i]]
-            #print(sorted_words[i] + ' ' + str(num))
             _topGenres.append(sorted_words[i])
-        # try to clean up some labels
+        # clean up some labels
         simplified_Labels = new_Classifier.GetLabels()
         for i in range(len(simplified_Labels)):
             for j in range(len(sorted_words)):
                 word = sorted_words[j]
-                # word = to_str(word)
                 if word in str(simplified_Labels[i]).lower() and len(word) > 2:
                     if "hop" in word or "hip" in word or "힙합" in str(simplified_Labels[i]).lower() or "r&b" in str(
                             simplified_Labels[i]).lower():
@@ -183,7 +163,7 @@ class DataCleaner(object):
             new_data = np.concatenate((new_data, _data))
         return new_simplified_labels, new_data
 
-    # General Use: This method will update classifier with new labels and corresponding data for top n genres
+    # Update classifier with new labels and corresponding data for top n genres
     # labels should be size n x 1 (song genre labels)
     # data should be size n x d (songs by features)
     def _CleanDataReturnTopN(self, labels, data, n=10):
@@ -213,7 +193,6 @@ class DataCleaner(object):
         words = words[words != "post"]
         words = words[words != "hard"]
 
-
         # get unique words and unique word counts
         unique_words, counts = np.unique(words, return_counts=True)
         # build our dictionary of unique words : unique word count for later
@@ -227,15 +206,12 @@ class DataCleaner(object):
         if len(sorted_words) < n:
             n = len(sorted_words)
         for i in range(n):
-            # num = word_dict[sorted_words[i]]
-            # print(sorted_words[i] + ' ' + str(num))
             _topGenres.append(sorted_words[i])
-        # try to clean up some labels
+        # clean up some labels
         simplified_Labels = labels
         for i in range(len(simplified_Labels)):
             for j in range(len(sorted_words)):
                 word = sorted_words[j]
-                # word = to_str(word)
                 if word in str(simplified_Labels[i]).lower() and len(word) > 2:
                     if "hop" in word or "hip" in word or "힙합" in str(simplified_Labels[i]).lower() or "r&b" in str(
                             simplified_Labels[i]).lower():
@@ -265,7 +241,6 @@ class DataCleaner(object):
             new_simplified_labels = np.concatenate((new_simplified_labels, _labels))
             _data = np.take(m_data, indices[i], axis=0).reshape((-1, data.shape[1]))
             new_data = np.concatenate((new_data, _data))
-        # new_unique, new_count = np.unique(new_simplified_labels, return_counts=True)
         unique_words, counts = np.unique(new_simplified_labels, return_counts=True)
         # build our dictionary of unique words : unique word count for later
         word_dict = dict()
@@ -273,17 +248,14 @@ class DataCleaner(object):
             word_dict[unique_words[i]] = counts[i]
         # sort unique words by count
         sorted_words = sorted(word_dict, key=word_dict.get, reverse=True)
-        # let's just print out our top n and see where we're at
         _topGenres = list()
         if len(sorted_words) < n:
             n = len(sorted_words)
         for i in range(n):
-            # num = word_dict[sorted_words[i]]
-            # print(sorted_words[i] + ' ' + str(num))
             _topGenres.append(sorted_words[i])
         return new_simplified_labels, new_data
 
-        # This method will update classifier with new labels and corresponding data for top n genres
+        # Update classifier with new labels and corresponding data for top n genres
     def GenreReduction(self, new_Classifier, n=10):
         # grab a string to process
         words = new_Classifier.GetLabels()
@@ -295,13 +267,10 @@ class DataCleaner(object):
             word_dict[unique_words[i]] = counts[i]
         # sort unique words by count
         sorted_words = sorted(word_dict, key=word_dict.get, reverse=True)
-        # let's just print out our top n and see where we're at
         _topGenres = list()
         for i in range(n):
-            # num = word_dict[sorted_words[i]]
-            # print(sorted_words[i] + ' ' + str(num))
             _topGenres.append(sorted_words[i])
-        # try to clean up some labels
+        # clean up some labels
         simplified_Labels = new_Classifier.GetLabels()
         indices = list()
         for i in range(len(_topGenres)):
@@ -329,15 +298,11 @@ class DataCleaner(object):
             word_dict[unique_words[i]] = counts[i]
         # sort unique words by count
         sorted_words = sorted(word_dict, key=word_dict.get, reverse=True)
-        # let's just print out our top n and see where we're at
         _topGenres = list()
         for i in range(unique_words.shape[0]):
-            # num = word_dict[sorted_words[i]]
-            # print(sorted_words[i] + ' ' + str(num))
             _topGenres.append(sorted_words[i])
-        # grab min
         min_count = word_dict[_topGenres[-1]]
-        # try to clean up some labels
+        # clean up some labels
         simplified_Labels = new_Classifier.GetLabels()
         indices = list()
         for i in range(len(_topGenres)):

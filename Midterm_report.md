@@ -11,7 +11,7 @@ We obtained song datasets from the online AcousticBrainz recording library. This
 
 We wanted to create a common dataset from which to train each classifier. While some classifiers can handle string features, most are limited to numerical features. We also wanted to use a numpy array to represent the feature matrix, for both the performance benefits and numpy's integration with scikit-learn. Towards these goals, we wrote a utility script that opens each song recording in our data folder, converts its JSON contents into a map of features, and then constructs a feature matrix using only the numerical features available. Numerical substitutions were specified for the song's key, which was a feature we were interested in keeping. This process also generated corresponding arrays of song IDs, feature names, and the labeled genres for us to validate the classifiers.
 
-The resulting feature matrix had 64 features. We took care to minimize memory leaks in the utility function, and experienced no issues when processing a 1000 song dataset. Such that only one of our members would need to download the dataset, we serialized the numpy matrices into files and distributed those files to group members. This allowed group members to import the matrices with only a few lines of code, and save the disk space associated with downloading the raw dataset.
+The resulting feature matrix had 64 features. We took care to minimize memory leaks in the utility function, and experienced no issues when processing a 1000 song dataset. To avoid repeated raw-data downloads, we serialized the NumPy matrices into reusable files. This allowed collaborators to import the matrices with only a few lines of code and save the disk space associated with downloading the raw dataset.
 
 
 ## Methods
@@ -24,7 +24,7 @@ We used K-Means to group the data into k clusters, varying k from two to ten. Th
 
 <center>Figure 1:</center>
 
-![Elbow Graph](elbowGraph2.png)
+![Elbow Graph](figures/elbowGraph2.png)
 
 
 
@@ -116,7 +116,7 @@ The random forest classifier is implemented using the sklearn library’s Random
 
 Clearly, these results are not indicative of accurate classification. In an effort to improve these classifications, we have decided to implement up stream, preprocessing of the data. We believe that Random Forest classification will improve in accuracy once the data and labels have been cleaned, and certain features are kept and removed.
 
-2. Support Vector Machine: Support Vector Machines (SVM) are known to be memory efficient and are effective in high-dimensional spaces. However, SVMs are known to have high runtimes when used to classify datasets with a high number of features. We created an SVM classifier, leveraging scikit-learn for an optimal implementation. However, when training the 
+2. Support Vector Machine: Support Vector Machines (SVM) are known to be memory efficient and are effective in high-dimensional spaces. However, SVMs are known to have high runtimes when used to classify datasets with a high number of features. We created an SVM classifier, leveraging scikit-learn for an optimal implementation. However, when training the
 SVM with the dataset, the training took more than an hour. We will therefore evaluate the effectiveness of SVMs after reducing the dimensionality of the dataset.
 
 3. XGBoost: XGBoost is a flexible decision-tree based method which utilizes non-greedy tree pruning and built in cross validation methods to predict errors with many parameters that can be fine-tuned for optimal clustering.
@@ -135,13 +135,13 @@ A scree plot (Figure 3) has been generated to determine how many PC’s to inclu
 
 Figure 3:
 
-![Scree Plot](scree_plot.png)
+![Scree Plot](figures/scree_plot.png)
 
 We assessed the amount of contribution each feature (Figure 4) gives to a dimension in order to determine which features are necessary to keep. 
 
 Figure 4:
 
-![Contribution Plot](contribution_plot.png)
+![Contribution Plot](figures/contribution_plot.png)
 
 Of the 64 total features, we found that for the top 10 contributions for each dimension from 1 to 15, 51 features should be optimal for providing valuable information for classification. While testing our classification methods, this number may change. We expect the 13 features of lowest contributions to dimensions 1 to 15 to not provide adequate information, or even misleading information, for accurate classification.
 

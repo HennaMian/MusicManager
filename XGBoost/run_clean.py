@@ -1,7 +1,5 @@
 import numpy as np
-import sys
-sys.path.append('../')
-import DataCleaning
+from scripts import DataCleaning
 
 
 labels = np.load('XGBoost/music_matrices/meta_genre_truths.npy')
